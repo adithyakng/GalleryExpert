@@ -15,11 +15,11 @@ class _LoadingPageState extends State<LoadingPage> {
   void initState() {
     super.initState();
     getAllFolders().then((albums) {
-      folders = albums;
-      print(folders);
-    });
-    setState(() {
-      _loading = false;
+      setState(() {
+        _loading = false;
+        folders = albums;
+      });
+      // print(folders);
     });
   }
 
@@ -36,6 +36,6 @@ class _LoadingPageState extends State<LoadingPage> {
   Widget build(BuildContext context) {
     return _loading
         ? Center(child: CircularProgressIndicator())
-        : AllFolderPage();
+        : AllFolderPage(folders);
   }
 }
